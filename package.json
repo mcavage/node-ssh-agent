@@ -1,0 +1,24 @@
+{
+  "author": "Mark Cavage <mcavage@gmail.com>",
+  "name": "ssh-agent",
+  "description": "An API for interacting with the SSH Agent.",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mcavage/node-ssh-agent.git"
+  },
+  "main": "lib/ssh_agent_client",
+  "engines": {
+    "node": ">= 0.4"
+  },
+  "dependencies": {
+    "ctype": ">=0.0.2"
+  },
+  "devDependencies": {
+    "whiskey": ">=0.4.0"
+  },
+  "scripts": {
+    "pretest": "which gjslint; if [[ \"$?\" = 0 ]] ; then  gjslint --nojsdoc -r lib; else echo \"Missing gjslint. Skipping lint\"; fi",
+    "test": "SSH_PRIVATE_KEY=$HOME/.ssh/id_rsa ./node_modules/.bin/whiskey -t \"`find tst -name *.test.js | xargs`\""
+  }
+}
