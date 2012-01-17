@@ -15,9 +15,9 @@ node.js.  For now, the operations supported are "list keys" and "sign data"
       var key = null;
       for (var i = 0; i < keys.length; i++) {
         if (keys[i].type === 'ssh-rsa') {
-	  key = keys[i];
-	  break;
-	}
+          key = keys[i];
+          break;
+        }
       }
       if (!key)
         return;
