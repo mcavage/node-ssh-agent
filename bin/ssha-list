@@ -1,0 +1,61 @@
+#!/usr/bin/env node
+// -*- mode: js -*-
+
+var getopt = require('posix-getopt');
+var path = require('path');
+var SSHAgentClient = require(path.resolve(__dirname, '../lib/ssh_agent_client.js'));
+
+
+
+///--- Functions
+
+function usage(msg, code) {
+  if (msg)
+    console.error(msg);
+
+  var str = 'usage: ' + path.basename(process.argv[1]);
+  console.error(str);
+  process.exit(code || 0);
+}
+
+
+function parseOptions() {
+  var option;
+  var parser = new getopt.BasicParser('h', process.argv);
+  var tmp;
+
+  while ((option = parser.getopt()) !== undefined && !option.error) {
+    switch (option.option) {
+    case 'h':
+      usage();
+      break;
+
+    default:
+      usage('invalid option', 1);
+      break;
+    }
+  }
+}
+
+
+
+///--- Mainline
+
+parseOptions();
+
+(new SSHAgentClient()).requestIdentities(function(err, keys) {
+  if (err) {
+    console.error(err.toString());
+    process.exit(1);
+  }
+
+  console.log(JSON.stringify(keys.map(function (k) {
+    return ({
+      key: k.ssh_key,
+      type: k.type,
+      name: k.comment
+    });
+  }), null, 2));
+
+  process.exit(0);
+});
