@@ -14,7 +14,7 @@ function usage(msg, code) {
     console.error(msg);
 
   var str = 'usage: ' + path.basename(process.argv[1]);
-  str += ' key_name data';
+  str += ' key_name ...';
   console.error(str);
   process.exit(code || 0);
 }
@@ -39,14 +39,8 @@ function parseOptions() {
 
   if (parser.optind() >= process.argv.length)
     usage('missing required argument: "name"');
-  if ((parser.optind() + 1) >= process.argv.length)
-    usage('missing required arguments: "data"');
 
-  var tmp = process.argv.slice(parser.optind());
-  return ({
-    name: tmp[0],
-    data: new Buffer(tmp[1])
-  });
+  return (process.argv.slice(parser.optind()).pop());
 }
 
 
@@ -54,7 +48,7 @@ function parseOptions() {
 ///--- Mainline
 
 var client = new SSHAgentClient();
-var opts = parseOptions();
+var kname = parseOptions();
 
 client.requestIdentities(function(err, keys) {
   if (err) {
@@ -63,17 +57,27 @@ client.requestIdentities(function(err, keys) {
   }
 
   var key = keys.filter(function (k) {
-    return (k.comment === opts.name);
+    return (k.comment === kname);
   }).pop();
 
   if (!key)
-    usage(opts.name + ' invalid', 1);
+    usage(kname + ' invalid', 1);
 
-  client.sign(key, opts.data, function(err2, signature) {
-    if (err) {
-      console.error(err.toString());
-      process.exit(1);
-    }
-    console.log(signature.signature);
+  var data = '';
+  process.stdin.resume();
+  process.stdin.setEncoding('utf8');
+
+  process.stdin.on('data', function (chunk) {
+    data += chunk;
+  });
+
+  process.stdin.on('end', function () {
+    client.sign(key, new Buffer(data), function(err2, signature) {
+      if (err2) {
+        console.error(err2.toString());
+        process.exit(1);
+      }
+      console.log(signature.signature);
+    });
   });
 });
