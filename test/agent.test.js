@@ -32,7 +32,7 @@ test('setup', function (t) {
 });
 
 test('request identities', function (t) {
-  client.requestIdentities(function(err, keys) {
+  client.requestIdentities(function (err, keys) {
     t.ifError(err);
     t.ok(keys);
     t.ok(keys.length);
@@ -45,7 +45,7 @@ test('request identities', function (t) {
 });
 
 test('sign', function (t) {
-  client.requestIdentities(function(err, keys) {
+  client.requestIdentities(function (err, keys) {
     t.ifError(err);
     t.ok(keys);
     t.ok(keys.length);
@@ -59,7 +59,7 @@ test('sign', function (t) {
     }
 
     var data = new Buffer('Hello World');
-    client.sign(key, data, function(err, signature) {
+    client.sign(key, data, function (err, signature) {
       t.ifError(err);
       t.ok(signature);
 
