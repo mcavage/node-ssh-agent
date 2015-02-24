@@ -20,9 +20,10 @@
     "posix-getopt": "1.0.0"
   },
   "devDependencies": {
-    "whiskey": "0.6.10"
+    "faucet": "0.0.1",
+    "tape": "3.5.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/whiskey -t \"`find tst -name *.test.js | xargs`\""
+    "test": "node ./test/agent.test.js | ./node_modules/.bin/faucet"
   }
 }
