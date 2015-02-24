@@ -1,8 +1,12 @@
 {
   "author": "Mark Cavage <mcavage@gmail.com>",
+  "contributors": [
+    "Dave Eddy <dave@daveeddy.com>",
+    "Patrick Mooney <patrick.f.mooney@gmail.com>"
+  ],
   "name": "ssh-agent",
   "description": "An API for interacting with the SSH Agent.",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "repository": {
     "type": "git",
     "url": "git://github.com/mcavage/node-ssh-agent.git"
