@@ -1,16 +1,17 @@
 {
   "author": "Mark Cavage <mcavage@gmail.com>",
+  "name": "node-ssh-agent",
   "contributors": [
     "Dave Eddy <dave@daveeddy.com>",
     "Patrick Mooney <patrick.f.mooney@gmail.com>",
-    "Dave Pacheco <dap@joyent.com>"
+    "Dave Pacheco <dap@joyent.com>",
+    "Anastasia Tumanova <avtumanova@yandex-team.ru>"
   ],
-  "name": "ssh-agent",
-  "description": "An API for interacting with the SSH Agent.",
-  "version": "0.2.4",
+  "description": "Copy of git://github.com/mcavage/node-ssh-agent.git",
+  "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mcavage/node-ssh-agent.git"
+    "url": "git://github.com/anmisttt/node-ssh-agent.git"
   },
   "bin": {
     "ssha-list": "./bin/ssha-list",
