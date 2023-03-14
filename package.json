@@ -1,6 +1,6 @@
 {
   "author": "Mark Cavage <mcavage@gmail.com>",
-  "name": "node-ssh-agent",
+  "name": "@yandex-int/node-ssh-agent",
   "contributors": [
     "Dave Eddy <dave@daveeddy.com>",
     "Patrick Mooney <patrick.f.mooney@gmail.com>",
@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "faucet": "0.0.1",
-    "tape": "3.5.0"
+    "tape": "4.0.0"
   },
   "scripts": {
     "test": "node ./test/agent.test.js | ./node_modules/.bin/faucet"
