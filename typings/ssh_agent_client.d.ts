@@ -1,5 +1,3 @@
-export = SSHAgentClient;
-
 type requestIdentitiesCallback = (e: Error | null, keys: Array<SSHAgent.Key>) => any;
 type signCallback = (e: Error | null, signature: SSHAgent.Signature) => any;
 
@@ -17,4 +15,4 @@ declare class SSHAgentClient {
     sign(key: SSHAgent.Key, data: Buffer, callback: signCallback): void;
 }
 
-declare const SSHAgentClient: SSHAgentClient;
+export const SSHAgentClient: SSHAgentClient;

@@ -8,7 +8,7 @@
     "Anastasia Tumanova <avtumanova@yandex-team.ru>"
   ],
   "description": "Copy of git://github.com/mcavage/node-ssh-agent.git",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "git://github.com/anmisttt/node-ssh-agent.git"
@@ -18,7 +18,7 @@
     "ssha-sign": "./bin/ssha-sign"
   },
   "main": "lib/ssh_agent_client",
-  "types": "./typings/ssh_agent_client.d.ts",
+  "types": "typings/ssh_agent_client.d.ts",
   "engines": {
     "node": ">= 0.8"
   },
