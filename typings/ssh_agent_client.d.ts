@@ -1,7 +1,24 @@
+export namespace SSHAgent {
+    interface Key {
+        type: string;
+        ssh_key: string;
+        comment: string;
+    }
+
+    interface Signature {
+        type: Buffer;
+        signature: string;
+    }
+
+    interface ClientOptions {
+        timeout?: number;
+    }
+}
+
 type requestIdentitiesCallback = (e: Error | null, keys: Array<SSHAgent.Key>) => any;
 type signCallback = (e: Error | null, signature: SSHAgent.Signature) => any;
 
-declare class SSHAgentClient {
+export class SSHAgentClient {
     timeout: number;
     sockFile: string;
     constructor(options?: SSHAgent.ClientOptions);
@@ -14,5 +31,3 @@ declare class SSHAgentClient {
     // Ставлю void, чтобы этим никто не воспользовался и было проще стабать в тестах
     sign(key: SSHAgent.Key, data: Buffer, callback: signCallback): void;
 }
-
-export const SSHAgentClient: SSHAgentClient;
