@@ -18,6 +18,7 @@
     "ssha-sign": "./bin/ssha-sign"
   },
   "main": "lib/ssh_agent_client",
+  "types": "./typings/ssh_agent_client.d.ts",
   "engines": {
     "node": ">= 0.8"
   },
