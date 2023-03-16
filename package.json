@@ -1,22 +1,24 @@
 {
   "author": "Mark Cavage <mcavage@gmail.com>",
+  "name": "@yandex-int/node-ssh-agent",
   "contributors": [
     "Dave Eddy <dave@daveeddy.com>",
     "Patrick Mooney <patrick.f.mooney@gmail.com>",
-    "Dave Pacheco <dap@joyent.com>"
+    "Dave Pacheco <dap@joyent.com>",
+    "Anastasia Tumanova <avtumanova@yandex-team.ru>"
   ],
-  "name": "ssh-agent",
-  "description": "An API for interacting with the SSH Agent.",
-  "version": "0.2.4",
+  "description": "Copy of git://github.com/mcavage/node-ssh-agent.git",
+  "version": "0.0.4",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mcavage/node-ssh-agent.git"
+    "url": "git://github.com/anmisttt/node-ssh-agent.git"
   },
   "bin": {
     "ssha-list": "./bin/ssha-list",
     "ssha-sign": "./bin/ssha-sign"
   },
   "main": "lib/ssh_agent_client",
+  "types": "typings/ssh_agent_client.d.ts",
   "engines": {
     "node": ">= 0.8"
   },
@@ -25,8 +27,9 @@
     "posix-getopt": "1.1.0"
   },
   "devDependencies": {
+    "@types/node": "18.14.2",
     "faucet": "0.0.1",
-    "tape": "3.5.0"
+    "tape": "4.0.0"
   },
   "scripts": {
     "test": "node ./test/agent.test.js | ./node_modules/.bin/faucet"
